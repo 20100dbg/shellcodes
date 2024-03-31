@@ -1,5 +1,6 @@
-#include <windows.h>
-#include <iostream.h>
+#include "windows.h"
+#include "stdafx.h"
+#include <stdio.h>
 
 //argv[1] == PID to inject
 
