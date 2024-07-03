@@ -1,6 +1,3 @@
-hollowing
-
-
 #include <stdio.h>
 #include <Windows.h>
 
@@ -39,9 +36,7 @@ int main() {
         return 1;
     }
 
-    DWORD replacementSize = GetFileSize(
-        hReplacement,
-        0);
+    DWORD replacementSize = GetFileSize(hReplacement,0);
     printf("[+] Replacement executable opened\r\n");
     printf("\t[*] Size %i bytes\r\n", replacementSize);
 

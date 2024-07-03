@@ -1,5 +1,9 @@
-// For x64 compile with: x86_64-w64-mingw32-gcc windows_dll.c -shared -o output.dll
-// For x86 compile with: i686-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+//from linux
+//64bit : x86_64-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+//32bit : i686-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+
+//from windows
+//gcc.exe .\evil.c -shared -o evil.dll
 
 #include <windows.h>
 
