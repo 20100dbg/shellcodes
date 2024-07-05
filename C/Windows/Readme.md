@@ -6,13 +6,15 @@ Get Mingw (POSIX, 32 + 64): https://winlibs.com/
 //32 bits
 $env:C_INCLUDE_PATH = 'C:\OpenSSL32\include'
 $env:Path += ';C:\mingw32\bin;C:\OpenSSL32\bin'
-gcc.exe .\stager.c -lwsock32 -L"C:/OpenSSL64/lib/VC/x86/MD" -lssl
+gcc.exe .\stager.c -lwsock32 -L"C:/OpenSSL32/lib/VC/x86/MD" -lssl
+i686-w64-mingw32-gcc stager.c -lwsock32 -lssl
 
 
 //64 bits
 $env:C_INCLUDE_PATH = 'C:\OpenSSL64\include'
 $env:Path += ';C:\mingw64\bin;C:\OpenSSL64\bin'
 gcc.exe .\stager.c -lwsock32 -L"C:/OpenSSL64/lib/VC/x64/MD" -lssl
+x86_64-w64-mingw32-gcc stager.c -lwsock32 -lssl
 
 
 //create payload

