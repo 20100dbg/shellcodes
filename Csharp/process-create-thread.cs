@@ -28,6 +28,7 @@ class Program
     static void Main()
     {
         int processId = 0;
+        
         UIntPtr bytesWritten = UIntPtr.Zero;
         uint shellcode_size = (uint)shellcode.Length;
         IntPtr lpThreadId = IntPtr.Zero;

@@ -7,6 +7,8 @@ $env:Path += 'C:\Windows\Microsoft.NET\Framework\v4.0.30319'
 //64 bit
 $env:Path += 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319'
 
+//packer
+https://mkaring.github.io/ConfuserEx/
 
 
 //create payload
